@@ -13,14 +13,14 @@ vim.wo.cursorcolumn = false
 vim.wo.signcolumn = "yes"
 -- line of reference on right
 -- vim.wo.colorcolumn = "80"
--- 2 space = 1 tab
-vim.o.tabstop = 2
-vim.bo.tabstop = 2
-vim.o.softtabstop = 2
+-- 4 space = 1 tab
+vim.o.tabstop = 4
+vim.bo.tabstop = 4
+vim.o.softtabstop = 4
 vim.o.shiftround = true
 -- >> << move
-vim.o.shiftwidth = 2
-vim.bo.shiftwidth = 2
+vim.o.shiftwidth = 4
+vim.bo.shiftwidth = 4
 -- space instead tab
 vim.o.expandtab = true
 vim.bo.expandtab = true
