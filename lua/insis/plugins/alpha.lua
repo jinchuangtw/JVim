@@ -210,7 +210,7 @@ local nvimInfoSection = {
 
 local versionSection = {
   type = "text",
-  val = require("insis").version .. " make with jinchuangtw by nshen",
+  val = require("insis").version .. " forked by jinchuangtw ",
   opts = {
     position = "center",
     hl = "Type",
