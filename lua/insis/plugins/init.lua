@@ -272,6 +272,9 @@ return {
     end,
   },
 
+  -- git blame
+  { "zivyangll/git-blame.vim" },
+
   --------------------- DAP ---------------------------------------------------
 
   -- vimspector
