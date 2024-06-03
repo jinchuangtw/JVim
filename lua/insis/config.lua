@@ -163,9 +163,9 @@ local UserConfig = {
       toggle = { "<A-m>", "<leader>m" },
       refresh = "R",
       -- open / close --
-      edit = { "o", "<2-LeftMouse>" },
+      edit = { "o", "<2-LeftMouse>", "<CR>" },
       close = "<BS>", -- close parent folder
-      system_open = "<CR>",
+      system_open = "s",
       vsplit = "sv",
       split = "sh",
       tabnew = "st",
