@@ -58,15 +58,15 @@ local opts_expr = {
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", opts_expr)
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", opts_expr)
 
--- visual模式下缩进代码
+-- visual mode: indent line
 keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
 
--- 上下移动选中文本
+-- move selected lines
 keymap("x", "J", ":move '>+1<CR>gv-gv")
 keymap("x", "K", ":move '<-2<CR>gv-gv")
 
--- 在visual mode 里粘贴不要复制
+-- visual mode: paste and no copy
 keymap("x", "p", '"_dP')
 
 --------------- super window -----------------------
