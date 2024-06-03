@@ -8,6 +8,14 @@ M.reset = function()
     vim.notify("colorscheme: " .. colorscheme .. " not found！")
     return
   end
+
+  local function bgTransparent()
+    vim.cmd([[
+        highlight Normal guibg=none
+        highlight NonText guibg=none
+    ]])
+  end
+  bgTransparent()
 end
 
 return M
