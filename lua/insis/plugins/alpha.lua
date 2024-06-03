@@ -133,12 +133,12 @@ end
 local header = {
   type = "text",
   val = {
-    [[    ____           _     _    ___         ]],
-    [[   /  _/___  _____(_)___| |  / (_)___ ___ ]],
-    [[   / // __ \/ ___/ / ___/ | / / / __ `__ \]],
-    [[ _/ // / / (__  ) (__  )| |/ / / / / / / /]],
-    [[/___/_/ /_/____/_/____/ |___/_/_/ /_/ /_/ ]],
-    [[                                          ]],
+    [[     ██╗███╗   ██╗   ███████╗ █████╗ ]],
+    [[     ██║████╗  ██║   ╚══███╔╝██╔══██╗]],
+    [[     ██║██╔██╗ ██║     ███╔╝ ╚██████║]],
+    [[██   ██║██║╚██╗██║    ███╔╝   ╚═══██║]],
+    [[╚█████╔╝██║ ╚████║██╗███████╗ █████╔╝]],
+    [[ ╚════╝ ╚═╝  ╚═══╝╚═╝╚══════╝ ╚════╝ ]],
   },
   opts = {
     position = "center",
@@ -210,7 +210,7 @@ local nvimInfoSection = {
 
 local versionSection = {
   type = "text",
-  val = require("insis").version .. " make with ♥ by nshen",
+  val = require("insis").version .. " make with jinchuangtw by nshen",
   opts = {
     position = "center",
     hl = "Type",
