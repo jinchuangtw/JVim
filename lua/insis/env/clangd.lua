@@ -3,7 +3,7 @@ return function(config)
   return {
     getFormatOnSavePattern = function()
       if config.format_on_save then
-        return { "*.c", "*.cpp", "*.cc" }
+        return { "*.c", "*.cpp", "*.cc", "*.hpp", "*.h" }
       end
       return {}
     end,
