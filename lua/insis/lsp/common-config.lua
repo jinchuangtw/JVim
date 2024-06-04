@@ -49,7 +49,7 @@ M.keyAttach = function(bufnr)
   keymap("n", lsp.call_out, telescope_builtin.lsp_outgoing_calls)
 end
 
--- 禁用格式化功能，交给专门插件插件处理
+-- Disable built-in formatter
 M.disableFormat = function(client)
   if vim.fn.has("nvim-0.8") == 1 then
     client.server_capabilities.documentFormattingProvider = false

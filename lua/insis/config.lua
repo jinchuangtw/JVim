@@ -35,6 +35,7 @@
 ---@field docker? DockerConfig Docker user config
 ---@field solidity? SolidityConfig
 ---@field java? JavaConfig
+---@field cmake? CMakeConfig CMake development user config
 ---@field git? GitConfig git user config
 ---@field mirror? MirrorConfig mirror config
 
@@ -508,6 +509,14 @@ local UserConfig = {
   ---@class JavaConfig
   java = {
     enable = false,
+  },
+
+  ---@class CMakeConfig
+  cmake = {
+    enable = false,
+    lsp = "cmake-language-server",
+    linter = "cmakelang",
+    format_on_save = false,
   },
 
   ---@class GitConfig

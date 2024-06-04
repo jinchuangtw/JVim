@@ -42,4 +42,11 @@ require("insis").setup({
     formatter = "black",
     format_on_save = true,
   },
+
+  cmake = {
+    enable = true,
+    lsp = "cmake-language-server",
+    formatter = "cmakelang",
+    format_on_save = true,
+  },
 })
