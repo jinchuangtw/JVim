@@ -39,7 +39,7 @@ vim.o.cmdheight = 1
 vim.o.autoread = true
 vim.bo.autoread = true
 -- no wrap for code
-vim.wo.wrap = false
+vim.wo.wrap = true
 vim.o.whichwrap = "<,>,[,]"
 vim.o.hidden = true
 vim.o.mouse = "a"

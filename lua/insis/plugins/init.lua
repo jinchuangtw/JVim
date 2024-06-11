@@ -275,6 +275,32 @@ return {
   -- git blame
   { "zivyangll/git-blame.vim" },
 
+  -- VimTeX
+  {
+    "lervag/vimtex",
+    lazy = false, -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_method = "zathura"
+    end,
+
+    config = function()
+      require("insis.plugins.vimtex")
+    end,
+  },
+
+  -- coc.nvim
+  {
+    "neoclide/coc.nvim",
+    config = function()
+      require("insis.plugins.coc-nvim")
+    end,
+  },
+
+  -- UltiSnips
+  { "SirVer/ultisnips" },
+  { "honza/vim-snippets" },
   --------------------- DAP ---------------------------------------------------
 
   -- vimspector

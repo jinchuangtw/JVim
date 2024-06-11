@@ -107,6 +107,10 @@ keymap("t", keys.terminal_to_normal, "<C-\\><C-n>")
 -- User customization for plugins
 -- git blame
 keymap("n", "<leader>g", "<CMD>GitBlame<CR>")
+-- vimtex
+keymap("n", "<leader>lt", "<CMD>VimtexTocToggle<CR>")
+keymap("n", "<leader>lo", "<CMD>copen<CR>")
+keymap("n", "<leader>lcl", "<CMD>cclose<CR>")
 
 -- markdown previewer
 keymap("n", "<A-d>", "<CMD>MarkdownPreviewToggle<CR>")
