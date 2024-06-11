@@ -9,13 +9,13 @@ M.reset = function()
     return
   end
 
-  --  local function bgTransparent()
-  --    vim.cmd([[
-  --        highlight Normal guibg=none
-  --        highlight NonText guibg=none
-  --    ]])
-  --  end
-  --  bgTransparent()
+  local function bgTransparent()
+    vim.cmd([[
+        highlight Normal guibg=none
+        highlight NonText guibg=none
+    ]])
+  end
+  bgTransparent()
 end
 
 return M
