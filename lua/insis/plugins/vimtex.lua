@@ -10,21 +10,21 @@ local function vim_settings()
         " let g:vimtex_compiler_progname = 'nvr'
         
         " PDF Viewer settings
-        let g:vimtex_view_method = 'skim' " 'skim' or 'zathura' here
+        let g:vimtex_view_method = 'zathura' " 'skim' or 'zathura' here
 
         " Uncomment this block for zathura viewer ---------------------------
-        " let g:vimtex_view_general_viewer = 'zathura'
-        " let g:vimtex_view_method = 'zathura'
+        let g:vimtex_view_general_viewer = 'zathura'
+        let g:vimtex_view_method = 'zathura'
         " -------------------------------------------------------------------
         
         " Uncomment this block for skim viewer ------------------------------
-        let g:vimtex_view_general_viewer
-        \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-        let g:vimtex_view_general_options = '-r @line @pdf @tex'
-        " Value 1 allows forward search after every successful compilation
-        let g:vimtex_view_skim_sync = 1 
-        " Value 1 allows change focus to skim after command `:VimtexView` is given
-        let g:vimtex_view_skim_activate = 1 
+        " let g:vimtex_view_general_viewer
+        " \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+        " let g:vimtex_view_general_options = '-r @line @pdf @tex'
+        " " Value 1 allows forward search after every successful compilation
+        " let g:vimtex_view_skim_sync = 1 
+        " " Value 1 allows change focus to skim after command `:VimtexView` is given
+        " let g:vimtex_view_skim_activate = 1 
         " -------------------------------------------------------------------
 
         " Toc settings
