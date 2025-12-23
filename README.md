@@ -1,5 +1,6 @@
 # JVim
 
+![image](image.png)
 My customized version of InsisVim, a Neovim IDE solution.
 
 ## Dependencies
