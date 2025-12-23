@@ -38,6 +38,7 @@
 ---@field cmake? CMakeConfig CMake development user config
 ---@field git? GitConfig git user config
 ---@field mirror? MirrorConfig mirror config
+---@field copilot_chat? InsisCopilotChatConfig Copilot Chat user config
 
 local UserConfig = {
 
@@ -538,6 +539,21 @@ local UserConfig = {
     packer = "https://github.com/",
     -- TODO: LSP DAP mirror config
     -- carefully change these value
+  },
+
+  ---@class InsisCopilotChatConfig
+  ---@field enable? boolean
+  ---@field keys? {quick_chat:string, prompt_actions:string, help_actions:string}
+  copilot_chat = {
+    enable = false,
+    keys = {
+      -- Code Chat
+      quick_chat = "<leader>cc",
+      -- Code Prompt
+      prompt_actions = "<leader>cp",
+      -- Code Help
+      help_actions = "<leader>ch",
+    },
   },
 }
 

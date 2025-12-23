@@ -1,6 +1,11 @@
 require("insis").setup({
   colorscheme = "dracula",
 
+  cmp = {
+    -- enable copilot auto-completion
+    copilot = true,
+  },
+
   clangd = {
     enable = true,
     lsp = "clangd",
