@@ -39,6 +39,52 @@ autocmd({ "BufNewFile", "BufRead" }, {
   command = "setfiletype markdown",
 })
 
+-- Downgrade heavy third-party/generated files to plain text to avoid freezes
+-- when jumping to definitions (gd) or just scrolling.
+autocmd({ "BufNewFile", "BufRead" }, {
+  group = myAutoGroup,
+  pattern = "*",
+  callback = function(args)
+    local bufnr = args.buf
+    local name = vim.api.nvim_buf_get_name(bufnr)
+    if not name or name == "" then
+      return
+    end
+
+    local function endswith(s, suf)
+      return s:sub(-#suf) == suf
+    end
+    local function contains(s, pat)
+      return s:find(pat) ~= nil
+    end
+
+    -- Rules (edit here)
+    local rules = {
+      -- Python stubs inside installed packages
+      {
+        when = endswith(name, ".pyi") and (contains(name, "/site%-packages/") or contains(name, "/dist%-packages/")),
+        ft = "text",
+      },
+
+      -- TypeScript declaration files in node_modules
+      { when = endswith(name, ".d.ts") and contains(name, "/node_modules/"), ft = "text" },
+
+      -- Minified bundles / sourcemaps
+      { when = endswith(name, ".min.js") or endswith(name, ".min.css") or endswith(name, ".map"), ft = "text" },
+
+      -- Common build output folders (optional; comment out if too aggressive)
+      -- { when = contains(name, "/dist/") or contains(name, "/build/") or contains(name, "/target/") or contains(name, "/vendor/"), ft = "text" },
+    }
+
+    for _, r in ipairs(rules) do
+      if r.when then
+        vim.bo[bufnr].filetype = r.ft
+        return
+      end
+    end
+  end,
+})
+
 -- set wrap only in markdown
 autocmd("FileType", {
   group = myAutoGroup,
