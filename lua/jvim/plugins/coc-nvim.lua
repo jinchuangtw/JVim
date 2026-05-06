@@ -158,16 +158,32 @@ local function coc_nvim_settings()
 
         " 
         function! s:disable_coc_for_type()
-        if index(g:coc_filetypes_enable, &filetype) == -1
-            :silent! CocDisable
-        else
-            :silent! CocEnable
+        if !exists('g:coc_filetypes_enable') || !get(g:, 'coc_service_initialized', 0)
+            return
         endif
+
+        if !exists(':CocEnable') || !exists(':CocDisable')
+            return
+        endif
+
+        let l:should_enable = index(g:coc_filetypes_enable, &filetype) != -1
+
+        if get(g:, 'coc_filetype_control_enabled', -1) == l:should_enable
+            return
+        endif
+
+        if l:should_enable
+            silent! CocEnable
+        else
+            silent! CocDisable
+        endif
+
+        let g:coc_filetype_control_enabled = l:should_enable
         endfunction
 
         augroup CocGroup
         autocmd!
-        autocmd BufNew,BufEnter,BufAdd,BufCreate * call s:disable_coc_for_type()
+        autocmd BufEnter,FileType * call s:disable_coc_for_type()
         augroup end
     ]])
 end
