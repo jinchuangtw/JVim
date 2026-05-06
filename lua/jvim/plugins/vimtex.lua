@@ -1,8 +1,27 @@
 local function vim_settings()
   vim.cmd([[
         let g:tex_flavor = 'latex'
-        let g:vimtex_compiler_latexmk_engines = {'_':'-xelatex'}
-        let g:vimtex_compiler_latexrun_engines ={'_':'xelatex'}
+
+        " Default compiler: XeLaTeX
+        " Per-file override example:
+        "   %! TeX program = lualatex
+        "   %! TeX program = xelatex
+        let g:vimtex_compiler_latexmk_engines = {
+        \ '_'        : '-xelatex',
+        \ 'xelatex'  : '-xelatex',
+        \ 'xetex'    : '-xelatex',
+        \ 'lualatex' : '-lualatex',
+        \ 'luatex'   : '-lualatex',
+        \}
+
+        let g:vimtex_compiler_latexrun_engines = {
+        \ '_'        : 'xelatex',
+        \ 'xelatex'  : 'xelatex',
+        \ 'xetex'    : 'xelatex',
+        \ 'lualatex' : 'lualatex',
+        \ 'luatex'   : 'lualatex',
+        \}
+
         let g:vimtex_quickfix_mode = 0
         set conceallevel=1
         let g:tex_conceal='abdmg'
