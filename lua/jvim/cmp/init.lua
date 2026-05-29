@@ -8,6 +8,16 @@ end
 
 local formatting = require("jvim.cmp.format").formatting
 
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  if col == 0 then
+    return false
+  end
+
+  local current_line = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
+  return current_line:sub(col, col):match("%s") == nil
+end
+
 local mapping = {
   [cfg.keys.complete] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
   [cfg.keys.abort] = cmp.mapping({
@@ -24,6 +34,29 @@ local mapping = {
   [cfg.keys.scroll_doc_down] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
   [cfg.keys.select_prev_item] = cmp.mapping.select_prev_item(),
   [cfg.keys.select_next_item] = cmp.mapping.select_next_item(),
+  ["<Tab>"] = cmp.mapping(function(fallback)
+    if luasnip.expandable() then
+      luasnip.expand()
+    elseif luasnip.jumpable(1) then
+      luasnip.jump(1)
+    elseif cmp.visible() then
+      cmp.select_next_item()
+    elseif has_words_before() then
+      cmp.complete()
+    else
+      fallback()
+    end
+  end, { "i", "s" }),
+
+  ["<S-Tab>"] = cmp.mapping(function(fallback)
+    if luasnip.jumpable(-1) then
+      luasnip.jump(-1)
+    elseif cmp.visible() then
+      cmp.select_prev_item()
+    else
+      fallback()
+    end
+  end, { "i", "s" }),
 }
 
 -- select next/prev in command mode
@@ -109,6 +142,16 @@ cmp.setup.filetype({ "markdown", "help" }, {
   }, {
     name = "path",
   } },
+})
+
+-- Use vimtex source for tex files.
+cmp.setup.filetype("tex", {
+  sources = {
+    { name = "vimtex" },
+    { name = "latex_symbols" },
+    { name = "luasnip" },
+    { name = "buffer" },
+  },
 })
 
 require("jvim.cmp.luasnip")

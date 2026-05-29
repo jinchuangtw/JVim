@@ -215,6 +215,9 @@ return {
   { "rafamadriz/friendly-snippets" },
   -- UI improvement
   { "onsails/lspkind-nvim" },
+  -- TeX support
+  { "micangl/cmp-vimtex" },
+  { "kdheepak/cmp-latex-symbols" },
 
   ------------------ Code formatter -------------------------------------------
 
@@ -286,17 +289,6 @@ return {
     end,
   },
 
-  -- coc.nvim
-  {
-    "neoclide/coc.nvim",
-    config = function()
-      require("jvim.plugins.coc-nvim")
-    end,
-  },
-
-  -- UltiSnips
-  { "SirVer/ultisnips" },
-  { "honza/vim-snippets" },
   --------------------- DAP ---------------------------------------------------
 
   -- vimspector
