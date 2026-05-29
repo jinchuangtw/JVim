@@ -358,11 +358,11 @@ return {
       require("jvim.plugins.copilot").copilot_chat()
     end,
   },
-  -- Codeium
-  {
-    "Exafunction/codeium.nvim",
-    config = function()
-      require("jvim.plugins.codeium").init()
-    end,
-  },
+  --   -- Codeium
+  --   {
+  --     "Exafunction/codeium.nvim",
+  --     config = function()
+  --       require("jvim.plugins.codeium").init()
+  --     end,
+  --   },
 }

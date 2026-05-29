@@ -125,11 +125,8 @@ local UserConfig = {
   ---@class CMPConfig
   cmp = {
     enable = true,
-    -- enable copilot cmp
-    copilot = false,
-    -- run ':Copilot auth' for the first time
-    codeium = false,
-    -- run `:Codeium Auth ` for the first time
+    -- Use GitHub Copilot through nvim-cmp.
+    copilot = true,
     keys = {
       confirm = "<CR>",
       select_next_item = "<C-j>",
@@ -138,12 +135,12 @@ local UserConfig = {
       scroll_doc_down = "<C-d>",
       complete = "<A-.>",
       abort = "<A-,>",
-      -- luasnip
+
+      -- LuaSnip
       snip_jump_next = "<C-l>",
       snip_jump_prev = "<C-h>",
       snip_next_choice = "<C-j>",
       snip_prev_choice = "<C-k>",
-      copilot_panel = "<leader>cpp",
     },
   },
 
@@ -545,13 +542,11 @@ local UserConfig = {
   ---@field enable? boolean
   ---@field keys? {quick_chat:string, prompt_actions:string, help_actions:string}
   copilot_chat = {
-    enable = false,
+    enable = true,
     keys = {
-      -- Code Chat
-      quick_chat = "<leader>cc",
-      -- Code Prompt
+      chat = "<leader>cc",
+      quick_chat = "<leader>cq",
       prompt_actions = "<leader>cp",
-      -- Code Help
       help_actions = "<leader>ch",
     },
   },

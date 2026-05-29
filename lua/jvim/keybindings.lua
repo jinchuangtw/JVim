@@ -114,6 +114,3 @@ keymap("n", "<leader>lcl", "<CMD>cclose<CR>")
 
 -- markdown previewer
 keymap("n", "<A-d>", "<CMD>MarkdownPreviewToggle<CR>")
-
--- Copilot
-keymap("n", "<leader>cc", "<CMD>CopilotChat<CR>")

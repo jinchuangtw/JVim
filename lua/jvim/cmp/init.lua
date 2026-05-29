@@ -69,6 +69,44 @@ keymap("c", cfg.keys.select_prev_item, "<C-p>", {
   silent = true,
 })
 
+local sources = {
+  {
+    name = "nvim_lsp",
+    group_index = 1,
+    priority = 1000,
+  },
+  {
+    name = "nvim_lsp_signature_help",
+    group_index = 1,
+    priority = 1000,
+  },
+  {
+    name = "luasnip",
+    group_index = 2,
+    priority = 1000,
+  },
+}
+
+if cfg.copilot then
+  table.insert(sources, {
+    name = "copilot",
+    group_index = 2,
+    priority = 900,
+  })
+end
+
+table.insert(sources, {
+  name = "buffer",
+  group_index = 3,
+  priority = 500,
+})
+
+table.insert(sources, {
+  name = "path",
+  group_index = 3,
+  priority = 300,
+})
+
 cmp.setup({
   -- we use luasnip
   snippet = {
@@ -82,35 +120,7 @@ cmp.setup({
   },
   mapping = mapping,
   formatting = formatting,
-  sources = cmp.config.sources({
-    {
-      name = "nvim_lsp",
-      group_index = 1,
-      priority = 1000,
-    },
-    {
-      name = "nvim_lsp_signature_help",
-      group_index = 1,
-      priority = 1000,
-    },
-    {
-      name = "luasnip",
-      group_index = 2,
-      priority = 1000,
-    },
-    { name = "codeium", group_index = 2, priority = 1000 },
-    { name = "copilot", group_index = 2, priority = 1000 },
-    {
-      name = "buffer",
-      group_index = 3,
-      priority = 500,
-    },
-    {
-      name = "path",
-      group_index = 3,
-      priority = 300,
-    },
-  }),
+  sources = cmp.config.sources(sources),
 })
 
 -- Use buffer source for `/`.
