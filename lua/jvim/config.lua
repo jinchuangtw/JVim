@@ -53,7 +53,8 @@ local UserConfig = {
     leader_key = " ",
     -- quick save / quite
     n_save = "<leader>w", -- :w
-    n_force_quit = "<leader>q", -- :qa!
+    n_quit = "<leader>q", -- :qa
+    n_force_quit = "<leader>Q", -- :qa!
     -- quick move
     n_v_5j = "<C-j>",
     n_v_5k = "<C-k>",
