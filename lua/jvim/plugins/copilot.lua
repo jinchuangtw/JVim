@@ -57,14 +57,38 @@ M.copilot_chat = function()
   copilot_chat.setup({
     debug = false,
     auto_follow_cursor = false,
+    auto_insert_mode = true,
+    model = "gpt-4.1",
+    temperature = 0.1,
+
+    window = {
+      layout = "vertical",
+      width = 0.42,
+    },
+
     prompts = {
-      -- Text related prompts
       Translate = "Please translate the following text into English.",
       Summarize = "Please summarize the following text.",
       Spelling = "Please correct any grammar and spelling errors in the following text.",
       Wording = "Please improve the grammar and wording of the following text.",
       Concise = "Please rewrite the following text to make it more concise.",
+
+      WorkspaceEdit = {
+        prompt = [[
+You are helping me modify this repository from Neovim.
+
+Workflow:
+1. First inspect the workspace using @copilot tools such as glob, grep, file, and gitdiff.
+2. Explain the files you plan to touch.
+3. Do not apply edits until I explicitly approve.
+4. When editing, prefer unified diffs.
+5. Keep changes minimal and easy to review.
+6. After editing, summarize what changed and what I should test.
+]],
+        description = "Workspace-aware edit workflow with reviewable diffs",
+      },
     },
+
     chat_autocomplete = true,
   })
 
@@ -74,11 +98,7 @@ M.copilot_chat = function()
     callback = function()
       vim.opt_local.relativenumber = true
       vim.opt_local.number = true
-
-      local ft = vim.bo.filetype
-      if ft == "copilot-chat" then
-        vim.bo.filetype = "markdown"
-      end
+      vim.opt_local.conceallevel = 0
     end,
   })
 
@@ -87,6 +107,24 @@ M.copilot_chat = function()
   -- Open CopilotChat window.
   keymap({ "n", "v", "x" }, keys.chat, "<CMD>CopilotChat<CR>", {
     desc = "CopilotChat open",
+  })
+
+  -- Workspace-aware CopilotChat session.
+  keymap("n", keys.workspace_agent, function()
+    copilot_chat.open()
+    copilot_chat.ask([[
+@copilot Please inspect this workspace first.
+
+I want a VSCode-like Copilot workflow:
+- understand the whole working directory,
+- identify relevant files,
+- propose a plan,
+- then produce reviewable diffs only after I approve.
+
+Start by summarizing the project structure and asking what task I want to perform.
+]])
+  end, {
+    desc = "CopilotChat workspace agent",
   })
 
   -- Quick one-line chat.

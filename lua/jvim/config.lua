@@ -541,12 +541,13 @@ local UserConfig = {
 
   ---@class JVimCopilotChatConfig
   ---@field enable? boolean
-  ---@field keys? {quick_chat:string, prompt_actions:string, help_actions:string}
+  ---@field keys? {chat:string, quick_chat:string, workspace_agent:string, prompt_actions:string, help_actions:string}
   copilot_chat = {
     enable = true,
     keys = {
       chat = "<leader>cc",
       quick_chat = "<leader>cq",
+      workspace_agent = "<leader>cw",
       prompt_actions = "<leader>cp",
       help_actions = "<leader>ch",
     },
