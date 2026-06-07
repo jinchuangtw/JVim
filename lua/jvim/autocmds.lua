@@ -23,6 +23,13 @@ autocmd("TermOpen", {
   command = "startinsert",
 })
 
+-- check whether files were changed outside Neovim, e.g. by Codex CLI
+autocmd({ "FocusGained", "BufEnter" }, {
+  group = myAutoGroup,
+  pattern = "*",
+  command = "checktime",
+})
+
 -- format on save
 autocmd("BufWritePre", {
   group = myAutoGroup,
