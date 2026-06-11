@@ -27,13 +27,13 @@ local function vim_settings()
         let g:tex_conceal='abdmg'
         " Uncomment this line if forward/backward searching is invalid
         " let g:vimtex_compiler_progname = 'nvr'
-        
-        " PDF Viewer settings
-        let g:vimtex_view_method = 'zathura' " 'skim' or 'zathura' here
 
-        " Uncomment this block for zathura viewer ---------------------------
-        let g:vimtex_view_general_viewer = 'zathura'
-        let g:vimtex_view_method = 'zathura'
+        " PDF Viewer settings
+        " Use Okular through VimTeX's general viewer interface
+        let g:vimtex_view_method = 'general'
+        let g:vimtex_view_general_viewer = 'okular'
+        let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+
         " -------------------------------------------------------------------
         
         " Uncomment this block for skim viewer ------------------------------
